@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Timestamp Microservice</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; padding: 2rem; max-width: 780px; margin: auto; line-height: 1.5; }
+    code { background: #f4f4f4; padding: 0.2rem 0.4rem; border-radius: 4px; }
+    pre { background: #f4f4f4; padding: 1rem; overflow: auto; border-radius: 6px; }
+    a { color: #2563eb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .card { border: 1px solid #e5e7eb; border-radius: 10px; padding: 1rem 1.25rem; margin: 1rem 0; }
+  </style>
+</head>
+<body>
+  <h1>Timestamp Microservice</h1>
+  <div class="card">
+    <p>Endpoints:</p>
+    <ul>
+      <li><code>/api</code> → current time</li>
+      <li><code>/api/:date</code> → date string (e.g. <code>2015-12-25</code>) or Unix ms (e.g. <code>1451001600000</code>)</li>
+    </ul>
+  </div>
+
+  <h2>Examples</h2>
+  <ul>
+    <li><a href="/api">/api</a></li>
+    <li><a href="/api/2015-12-25">/api/2015-12-25</a></li>
+    <li><a href="/api/1451001600000">/api/1451001600000</a></li>
+  </ul>
+
+  <h2>Expected JSON</h2>
+  <pre>{
+  "unix": 1451001600000,
+  "utc": "Fri, 25 Dec 2015 00:00:00 GMT"
+}</pre>
+
+  <p>If input is invalid, response is:</p>
+  <pre>{ "error": "Invalid Date" }</pre>
+
+  <p><strong>Note:</strong> Time zone conversion is not part of this project; dates are parsed with <code>new Date()</code> as GMT.</p>
+</body>
+</html>
